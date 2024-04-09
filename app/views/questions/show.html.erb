@@ -37,13 +37,7 @@
   </div>
   <div class="card card-body">
     <% if current_user.present? %>
-      <%= form_with model: [@question, @answer || Answer.new] do |f| %>
-        <div class="form-group">
-          <%= f.label :body %>
-          <%= f.text_area :body, class: 'form-control' %>
-        </div>
-        <%= f.submit '回答する', class: 'btn btn-primary d-block m-auto' %>
-      <% end %>
+      <%= render 'answers/form', question: @question, answer: Answer.new %>
     <% end %>
     <hr />
     <ul class="list-unstyled">

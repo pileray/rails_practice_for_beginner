@@ -27,6 +27,23 @@ class AnswersController < ApplicationController
     redirect_to question_path(params[:question_id]), success: '回答を削除しました'
   end
 
+  def edit
+    @answer = current_user.answers.find_by(id: params[:id])
+    unless @answer
+      redirect_to questions_path
+    end
+  end
+
+  def update
+    @answer = current_user.answers.find(params[:id])
+    if @answer.update(answer_params)
+      redirect_to question_path(@answer.question), success: '回答を更新しました'
+    else
+      flash.now[:danger] = '失敗しました'
+      render :edit
+    end
+  end
+
   private
 
   def answer_params
