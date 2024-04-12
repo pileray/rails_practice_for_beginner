@@ -17,9 +17,36 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+    unless @user
+      redirect_to questions_path
+      flash[:danger] = "ユーザーが存在しません"
+    end
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+    unless @user == current_user
+      redirect_to questions_path
+      flash[:danger] = "アクセスが許可されていません"
+    end
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user == current_user && @user.update(user_params)
+      redirect_to user_path(@user)
+      flash[:success] = "ユーザー情報を更新しました"
+    else
+      render :edit
+      flash.now[:danger] = "ユーザー情報の更新に失敗しました"
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio)
   end
 end

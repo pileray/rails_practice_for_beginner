@@ -17,6 +17,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        bio: プロフィール
       question:
         title: タイトル
         body: 質問内容

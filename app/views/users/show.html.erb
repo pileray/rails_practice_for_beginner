@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="card card-body mt-2">
+      <div class="d-flex">
+        <div class="align-items-center">
+          <%= image_tag 'https://placehold.jp/64x64.png', class: 'rounded-circle mr-4' %>
+        </div>
+        <div>
+          <div>
+            <h5 class="card-title"><%= @user.name %></h5>
+            <p class="card-text"><%= @user.email %></p>
+          </div>
+          <hr>
+          <div class="text-break mt-2">
+            <%= simple_format(@user.bio) %>
+          </div>
+        </div>
+      </div>
+      <% if @user == current_user %>
+        <%= link_to "ユーザー編集", edit_user_path(@user), class: 'btn btn-sm btn-info' %>
+      <% end %>
+    </div>
+  </div>
+</div>

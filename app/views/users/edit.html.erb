@@ -1,0 +1,18 @@
+<div class="container">
+  <h5 class="mt-2">ユーザー情報編集</h5>
+  <%= form_with model: @user do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :bio %>
+      <%= f.text_area :bio, class: 'form-control', rows: 10 %>
+    </div>
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -2,8 +2,12 @@
   <div id="question-area" class="card card-body mb-5">
     <div class="d-flex">
       <div class="text-center mr-3">
-        <%= image_tag 'https://placehold.jp/64x64.png', class: 'rounded-circle' %>
-         <div class="small"><%= @question.user.name %></div>
+        <%= link_to user_path(@question.user) do %>
+          <%= image_tag 'https://placehold.jp/64x64.png', class: 'rounded-circle' %>
+          <div class="small">
+            <%= @question.user.name %>
+          </div>
+        <% end %>
       </div>
       <div class="flex-grow-1 d-flex flex-column justify-content-between">
         <div class="d-flex justify-content-between">
