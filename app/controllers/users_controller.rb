@@ -18,23 +18,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    unless @user
-      redirect_to questions_path
-      flash[:danger] = "ユーザーが存在しません"
-    end
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
-    unless @user == current_user
-      redirect_to questions_path
-      flash[:danger] = "アクセスが許可されていません"
-    end
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     if @user == current_user && @user.update(user_params)
       redirect_to user_path(@user)
       flash[:success] = "ユーザー情報を更新しました"
