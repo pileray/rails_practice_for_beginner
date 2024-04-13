@@ -28,10 +28,7 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    @answer = current_user.answers.find_by(id: params[:id])
-    unless @answer
-      redirect_to questions_path
-    end
+    @answer = current_user.answers.find(params[:id])
   end
 
   def update
