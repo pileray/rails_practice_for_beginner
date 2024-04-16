@@ -1,6 +1,6 @@
 <div class="container">
   <h5 class="mt-2">ユーザー情報編集</h5>
-  <%= form_with model: @user do |f| %>
+  <%= form_with url: profile_path, model: @user, method: :patch do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>

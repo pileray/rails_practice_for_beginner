@@ -21,21 +21,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-    @user = User.where(id: current_user.id).find(params[:id])
-  end
-
-  def update
-    @user = User.where(id: current_user.id).find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-      flash[:success] = "ユーザー情報を更新しました"
-    else
-      render :edit
-      flash.now[:danger] = "ユーザー情報の更新に失敗しました"
-    end
-  end
-
   private
 
   def user_params
